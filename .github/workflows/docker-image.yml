@@ -21,6 +21,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build & Push Image
       run: |
-        echo "${{ secrets.Docker_Password }}" | docker login -u "sebastien627" --password-stdin
+        echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "sebastien627" --password-stdin
         docker image build -t sebastien627/weather_app:latest .
         docker push sebastien627/weather_app:latest
