@@ -15,9 +15,14 @@ def read_api(params):
 
 # print('Current temperature in %s is %d℃' % (api_response['location']['name'], api_response['current']['temperature']))
 
+def celsius_to_far(cels_temp): 
+    far_temp = (cels_temp * (9/5) + 32)
+    return int(far_temp)
+
 def get_temp(api_response): 
     temp = api_response["current"]["temperature"]
-    return temp
+    far_temp = celsius_to_far(temp)
+    return far_temp
 
 def get_wind_speed(api_response): 
     wind_speed = api_response["current"]["wind_speed"]
@@ -40,17 +45,14 @@ params = {
 
 weather_data = read_api(params)
 
-print("Temperature")
-print(get_temp(weather_data))
+final_temp = get_temp(weather_data)
+print("The temperature in fahrenheit for {} is {} degrees fahrenheit".format(city, final_temp))
 
-print("Wind Speed")
-print(get_wind_speed(weather_data))
+final_weather_description = get_weather_description(weather_data)
+print("The weather in {} is {}".format(city, final_weather_description))
 
-print("What the weather is like")
-print(get_weather_description(weather_data))
-
-print("Local time is: ")
-print(get_local_time(weather_data))
+local_time = get_local_time(weather_data)
+print("The local date and time in {} is {}".format(city, local_time))
 
 
 
