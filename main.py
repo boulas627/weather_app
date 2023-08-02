@@ -5,6 +5,9 @@
 
 import requests 
 import json
+import os 
+
+api_key = os.environ["api_key"]
 
 def read_api(params): 
     api_result = requests.get('http://api.weatherstack.com/current', params)
@@ -34,7 +37,7 @@ def get_local_time(api_response):
 city = input("What city would you like to get data for? ")
 
 params = {
-    "access_key": API_KEY,
+    "access_key": api_key,
     "query": str(city)
 }
 
@@ -51,3 +54,5 @@ print("The local date and time in {} is {}".format(city, local_time))
 
 
 # keep terminal open to run daily? Also can use cron job 
+
+# video to help write GitHub Actions and use Secrets as Env Variable 
