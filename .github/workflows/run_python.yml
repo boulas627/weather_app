@@ -2,9 +2,13 @@ name: Run Python Script
 
 on: 
   workflow_dispatch: 
+    inputs:
+       myInput:
+         description: 'User Input:'
+         required: true
   
 env:
-  api_key = ${{ secrets.API_KEY }}
+  api_key: ${{ secrets.API_KEY }}
 
 jobs: 
   run-python: 
@@ -22,4 +26,5 @@ jobs:
       - name: Run Python Script
         run: |
           pip install requests
-          python main.py
+          input_city=${{ github.event.inputs.myInput }} python main.py
+        
