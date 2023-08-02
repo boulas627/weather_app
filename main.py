@@ -34,7 +34,8 @@ def get_local_time(api_response):
     time = api_response["location"]["localtime"]
     return time
 
-city = input("What city would you like to get data for? ")
+# city = input("What city would you like to get data for? ")
+city = os.environ['input_city']
 
 params = {
     "access_key": api_key,
