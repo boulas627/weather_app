@@ -44,6 +44,8 @@ params = {
 
 weather_data = read_api(params)
 
+print(weather_data)
+
 final_temp = get_temp(weather_data)
 print("The temperature in fahrenheit for {} is {} degrees fahrenheit".format(city, final_temp))
 
