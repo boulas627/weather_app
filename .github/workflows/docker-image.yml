@@ -23,4 +23,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
+          tags: "Workflow File"
       
