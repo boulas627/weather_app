@@ -1,1 +1,5 @@
 This app is meant to tell a user what the weather is in his or her desired location with the help of an API. 
+
+
+For instructions on how to push code to Docker I used the following links: 
+https://docs.github.com/en/actions/publishing-packages/publishing-docker-images 

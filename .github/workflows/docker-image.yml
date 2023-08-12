@@ -1,3 +1,5 @@
+# This is a basic workflow to help you get started with Actions
+
 name: Docker Build & Push
 
 # Controls when the workflow will run
@@ -9,16 +11,18 @@ on:
     branches: [ "main" ]
 
   # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+  
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-    
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v2
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build & Push Image
+      run: |
+        echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "sebastien627" --password-stdin
+        docker image build -t sebastien627/pyflask:weather_app .
+        docker push sebastien627/pyflask:weather_app
